@@ -13,6 +13,21 @@ namespace StringIO_TextView
     {
         string OrgStr = ""; // "결과 : " 문자열 저장
 
+        private bool TextCheck()
+        {
+            if (this.txtEdit.Text != "")
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("텍스트를 입력하세요!", "알림",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtEdit.Focus();
+                return false;
+            }
+        }
+        
         public Form1()
         {
             InitializeComponent();
@@ -24,8 +39,13 @@ namespace StringIO_TextView
         }
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            this.lblResult.Text = this.OrgStr + this.txtEdit.Text;
+            if (TextCheck()) {
+                this.lblResult.Text = this.OrgStr + this.txtEdit.Text;
+            }
+
         }
+
+
 
     }
 }
